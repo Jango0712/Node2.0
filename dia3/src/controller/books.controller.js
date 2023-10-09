@@ -54,10 +54,12 @@ const putbooks = (req, res) =>{
             modificar.photo = req.body.photo
             modificar.id_book = req.body.id_book
             modificar.id_user = req.body.id_user
-            put = {error:false, codigo: 200, mensaje: "El libro se ha modificado correctamente", data:modificar}
+            respuesta= {error:false, codigo: 200, mensaje: "El libro se ha modificado correctamente", data:modificar}
+
         }else{
             respuesta = {error:true, codigo: 404, mensaje: "No se pudo modificar libro"}
         }
+        res.send();
     }
 }
 
