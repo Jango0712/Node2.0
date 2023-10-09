@@ -44,22 +44,14 @@ const putbooks = (req, res) =>{
     let modificar;
 
     if(req.body.id_book){
-        modificar = books.find(book => book.id_book == req.body.id_book);
-        console.log(modificar);
-        if(modificar.id_book == req.query.id_book){
-            modificar.title = req.body.title
-            modificar.type = req.body.type
-            modificar.author = req.body.author
-            modificar.price = req.body.price
-            modificar.photo = req.body.photo
-            modificar.id_book = req.body.id_book
-            modificar.id_user = req.body.id_user
-            respuesta= {error:false, codigo: 200, mensaje: "El libro se ha modificado correctamente", data:modificar}
-
+        modificar = books.findIndex(book => book.id_book == req.body.id_book);
+        if(modificar !== -1){
+            books[modificar] = req.body;
+            respuesta = {error:false, codigo: 200, mensaje: "El libro se ha modificado correctamente", data:req.body};
         }else{
             respuesta = {error:true, codigo: 404, mensaje: "No se pudo modificar libro"}
         }
-        res.send();
+        res.send(respuesta);
     }
 }
 
