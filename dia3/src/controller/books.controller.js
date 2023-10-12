@@ -3,8 +3,8 @@ const app = express();
 const Book = require('../models/book');
 
 let books = [
-    new Book("el principito", "aventuras", "Jan", 50, "foto", 1, 1),
-    new Book("el nombre del viento","aventuras", "patrick", 20, "foto", 2, 0 ),
+    new Book('El Principito', 'Aventuras', 'José Carlos', 99, 'https://m.media-amazon.com/images/I/81E-RNGwAIL._AC_UF1000,1000_QL80_.jpg', 99, 99),
+    new Book('El Nombre del viento', 'Aventuras', 'Patrick Roffus', 120, 'https://i0.wp.com/saltodeeje.ideal.es/wp-content/uploads/2014/07/nombre-viento-portada.jpg?fit=650%2C366&ssl=1', 85, 85),
 ];
 
 const getbookid = (req, res) =>{
@@ -30,7 +30,7 @@ const postbooks = (req,res) => {
     let post;
     if(req.body){
    
-        books.push(new Book (req.body.title, req.body.type, req.body.author, req.body.price, req.body.photo, req.body.id_book, req.body.id_user));
+        books.push(new Book (req.body));
         post= {error:false, codigo:200, mensaje:"Libro añadido correctamente", data: books}
     
     }else{

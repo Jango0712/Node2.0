@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const Book = require('../models/book');
 
- let book = new Book ("el principito", "aventuras", "Jan", 50, "foto", 1, 1);
+ let book = new Book ('El Principito', 'Aventuras', 'José Carlos', 99, 'https://m.media-amazon.com/images/I/81E-RNGwAIL._AC_UF1000,1000_QL80_.jpg', 99, 99);
 //let book = null;
 
 function getStart(request, response){
