@@ -30,7 +30,7 @@ const postbooks = (req,res) => {
     let post;
     if(req.body){
    
-        books.push(new Book (req.body));
+        books.push(new Book (req.body.title, req.body.type, req.body.author, req.body.price, req.body.photo, req.body.id_book, req.body.id_user));
         post= {error:false, codigo:200, mensaje:"Libro añadido correctamente", data: books}
     
     }else{
@@ -56,7 +56,7 @@ const putbooks = (req, res) =>{
 }
 
 const deletebooks = (req, res) =>{
-    books= books.filter(book => book.id_book != req.query.id_book)
+    books= books.filter(book => book.id_book != req.body.id_book)
     res.send({error:false, codigo: 200, mensaje: "libro borrado"})
 }
 
